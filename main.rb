@@ -8,9 +8,14 @@ require_relative './cubeRoots/cubeRootOfPrime.rb'
 
 $finalCompressArray = []
 $finalString;
+initHash # create 8 random number by using factional part of SQUARE root of first 8 primes number and multiple them with 2^32
+genRandomNumber # create 64 random number by using factional part of CUBE root of first 8 primes number and multiple them with 2^32
 def finalCompress str
-    initHash # create 8 random number by using factional part of SQUARE root of first 8 primes number and multiple them with 2^32
-    genRandomNumber # create 64 random number by using factional part of CUBE root of first 8 primes number and multiple them with 2^32
+    $finalCompressArray.clear 
+    $compressArray = initHash.clone
+    $arr.clear
+    $blockOfMessages.clear
+    # puts $compressArray
     message = createMessagesBits str # Hash message and return bits
     tmpStr = split message; # add zero and divide to multiple chunk loop
     w = [];
@@ -24,29 +29,29 @@ def finalCompress str
             for i in 0..7
                 $compressArray[i] =  addBit($compressArray[i], $initialArray[i]);
             end
+        # puts 
         else
             for i in 0..7
                 $compressArray[i] =  addBit($compressArray[i], oldcompress[i]);
             end
         end
-        j+=1;
-        $compressArray.each do |i| 
-            # puts modifyBits(i,32)
-        end
-        puts 
-        puts 
-        puts 
+        j+=1; 
     end
 
 
     #final hash
 
     $compressArray.each do |i|
-        $finalCompressArray.push i.to_s(16);
+        x = i.to_s(16);
+        while x.length < 8
+            x = '0' + x;
+        end
+        $finalCompressArray.push x
     end
-    puts $finalCompressArray.join("")
+
+    ret = $finalCompressArray.join("")
+    # while ret.length() < 64
+    #     ret = '0' + ret;
+    # end
+    return ret
 end
-# str = gets().chomp
-str = 'abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd'
-finalCompress str;
-# puts $compressArray

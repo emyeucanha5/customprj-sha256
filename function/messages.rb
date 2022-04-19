@@ -6,7 +6,7 @@ def createMessagesBits str;
     $arr.each do |i|
         ret+= modifyBits(i,8);
     end
-    puts "Messega: " + ret.to_s.length.to_s;
+    # puts "Messega: " + ret.to_s.length.to_s;
     return ret;
 end
 

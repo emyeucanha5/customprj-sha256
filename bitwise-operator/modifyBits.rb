@@ -15,3 +15,4 @@ end
 def changeDecimaltoBits (x)
     return x.to_s(2)
 end
+ 
