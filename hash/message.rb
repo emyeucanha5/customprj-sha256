@@ -14,10 +14,11 @@ def message1 i, w
     p3 = $compressArray[7];
     p4 = $randNum[i];
     p5 = w[i];
+    # puts changeBitsToDecimal(p5)
     tmp1 = addBit(p1, p2);
     tmp2 = addBit(p3, p4);
     tmp3 = addBit(tmp1, tmp2);
-    m1 = addBit(tmp3, changeBitsToDecimal(p5));
+    m1 = addBit(tmp3, p5);
     # puts modifyBits(m1,32);
     return m1;
 end

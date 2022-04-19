@@ -29,7 +29,7 @@ def finalCompress str
             for i in 0..7
                 $compressArray[i] =  addBit($compressArray[i], $initialArray[i]);
             end
-        puts 
+        # puts 
         else
             for i in 0..7
                 $compressArray[i] =  addBit($compressArray[i], oldcompress[i]);
@@ -55,7 +55,3 @@ def finalCompress str
     # end
     return ret
 end
-# str = gets().chomp
-# str = 'abcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcdabcd'
-# finalCompress str;
-# puts $compressArray
