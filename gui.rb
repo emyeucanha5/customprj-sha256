@@ -219,7 +219,6 @@ $button.bind('ButtonRelease'){
     $block_label.background = 'lightblue';
     $nonce_label.background = 'lightblue';
     $output_block.background = 'lightblue';
-    puts x
 }
  
 $hash_label = TkLabel.new($f2) do
@@ -278,6 +277,7 @@ $f4 = []
 $tmpArray.each do |i|
     $f4[i] = TkFrame.new($f3_1) do
         background "lightgreen"
+        width 300
         pack('side' => 'left', "padx" => "5")
         # height 10
     end
@@ -326,12 +326,14 @@ $tmpArray.each do |i|
     $previous_label[i] = TkLabel.new($f4[i]) do
         background "lightgreen"
         text 'Prev: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
+        width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "top",  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
     $output_block_chain[i] = TkLabel.new($f4[i]) do
         text 'Hash: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
         background "lightgreen"
+        width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "bottom",'fill' => 'x',  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
@@ -366,26 +368,13 @@ $tmpArray.each do |i|
         end
         for j in 0..5
             if($output_block_chain[j].text[6,64][0,2] != "00")
-            
-                $f4[j].background = 'red'
-                $index_chain_label[j].background = 'red'
-                $data_chain_label[j].background = 'red'
-                $nonce_chain_label[j].background = 'red'
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
-                $f4[j].background = 'lightgreen'
-                $index_chain_label[j].background = 'lightgreen'
-                $data_chain_label[j].background = 'lightgreen'
-                $nonce_chain_label[j].background = 'lightgreen'
                 $output_block_chain[j].background = 'lightgreen'
                 $previous_label[j].background = 'lightgreen'
             end
         end
-        # puts $output_block_chain[i].text
-        # if($output_block.text[0,2] != "00")   
-        # else
-        # end
     }
     $input_block_chain[i].bind('KeyRelease'){
         for j in 0..5
@@ -403,18 +392,9 @@ $tmpArray.each do |i|
         end
         for j in 0..5
             if($output_block_chain[j].text[6,64][0,2] != "00")
-            
-                $f4[j].background = 'red'
-                $index_chain_label[j].background = 'red'
-                $data_chain_label[j].background = 'red'
-                $nonce_chain_label[j].background = 'red'
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
-                $f4[j].background = 'lightgreen'
-                $index_chain_label[j].background = 'lightgreen'
-                $data_chain_label[j].background = 'lightgreen'
-                $nonce_chain_label[j].background = 'lightgreen'
                 $output_block_chain[j].background = 'lightgreen'
                 $previous_label[j].background = 'lightgreen'
             end
@@ -440,18 +420,9 @@ $tmpArray.each do |i|
         end
         for j in 0..5
             if($output_block_chain[j].text[6,64][0,2] != "00")
-            
-                $f4[j].background = 'red'
-                $index_chain_label[j].background = 'red'
-                $data_chain_label[j].background = 'red'
-                $nonce_chain_label[j].background = 'red'
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
-                $f4[j].background = 'lightgreen'
-                $index_chain_label[j].background = 'lightgreen'
-                $data_chain_label[j].background = 'lightgreen'
-                $nonce_chain_label[j].background = 'lightgreen'
                 $output_block_chain[j].background = 'lightgreen'
                 $previous_label[j].background = 'lightgreen'
             end
@@ -513,12 +484,14 @@ $tmp2Array.each do |i|
     $previous_label[i] = TkLabel.new($f4[i]) do
         background "lightgreen"
         text 'Prev: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
+        width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "top",  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
     $output_block_chain[i] = TkLabel.new($f4[i]) do
         text 'Hash: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
         background "lightgreen"
+        width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "bottom",'fill' => 'x',  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
@@ -553,18 +526,9 @@ $tmp2Array.each do |i|
         end
         for j in 0..5
             if($output_block_chain[j].text[6,64][0,2] != "00")
-            
-                $f4[j].background = 'red'
-                $index_chain_label[j].background = 'red'
-                $data_chain_label[j].background = 'red'
-                $nonce_chain_label[j].background = 'red'
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
-                $f4[j].background = 'lightgreen'
-                $index_chain_label[j].background = 'lightgreen'
-                $data_chain_label[j].background = 'lightgreen'
-                $nonce_chain_label[j].background = 'lightgreen'
                 $output_block_chain[j].background = 'lightgreen'
                 $previous_label[j].background = 'lightgreen'
             end
@@ -590,18 +554,9 @@ $tmp2Array.each do |i|
         end
         for j in 0..5
             if($output_block_chain[j].text[6,64][0,2] != "00")
-            
-                $f4[j].background = 'red'
-                $index_chain_label[j].background = 'red'
-                $data_chain_label[j].background = 'red'
-                $nonce_chain_label[j].background = 'red'
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
-                $f4[j].background = 'lightgreen'
-                $index_chain_label[j].background = 'lightgreen'
-                $data_chain_label[j].background = 'lightgreen'
-                $nonce_chain_label[j].background = 'lightgreen'
                 $output_block_chain[j].background = 'lightgreen'
                 $previous_label[j].background = 'lightgreen'
             end
@@ -628,18 +583,9 @@ $tmp2Array.each do |i|
         end
         for j in 0..5
             if($output_block_chain[j].text[6,64][0,2] != "00")
-            
-                $f4[j].background = 'red'
-                $index_chain_label[j].background = 'red'
-                $data_chain_label[j].background = 'red'
-                $nonce_chain_label[j].background = 'red'
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
-                $f4[j].background = 'lightgreen'
-                $index_chain_label[j].background = 'lightgreen'
-                $data_chain_label[j].background = 'lightgreen'
-                $nonce_chain_label[j].background = 'lightgreen'
                 $output_block_chain[j].background = 'lightgreen'
                 $previous_label[j].background = 'lightgreen'
             end
