@@ -1,6 +1,6 @@
 require_relative('./message');
-require_relative('../bitwise-operator/index.rb');
-require_relative('../cubeRoots/cubeRootOfPrime.rb');
+require_relative('../bitwise-operator/index');
+require_relative('../function/cubeRootOfPrime');
 
 
 $compressArray = initHash.clone

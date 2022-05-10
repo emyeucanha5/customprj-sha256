@@ -28,7 +28,7 @@ def genRandomNumber
             k = Math.cbrt(i.to_f)
             ans = k - k.to_i
             ans = (ans.round(15)*(2**32)).to_i;
-            $randNum << ans
+            $randNum << ans;
             # ans = modifyBits(ans, 32)
             # puts $randNum.length.to_s + ' ' + ans.to_s
         end
@@ -36,3 +36,4 @@ def genRandomNumber
     end
     return $randNum
 end
+

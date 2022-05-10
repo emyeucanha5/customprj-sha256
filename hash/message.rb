@@ -1,6 +1,6 @@
 require_relative "./initHash";
 require_relative "../bitwise-operator/index";
-require_relative "../cubeRoots/cubeRootOfPrime"
+require_relative "../function/cubeRootOfPrime"
 require_relative "../function/divideToSixteenwords"
 
 

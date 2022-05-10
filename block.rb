@@ -1,4 +1,4 @@
-require_relative('./main.rb')
+require_relative('./finalHash.rb')
 Maxnonce = 100000;
 $difficulty = "00";
 class BlockCreated
