@@ -1,12 +1,10 @@
 require_relative("./modifyBits");
 
 def addBit (x,y)
-    k = (x + y) % (2 ** 32)
-    # k = k.to_s(2)
-    # puts "addBit " + modifyBits(k)
-    return k
+    ret = (x + y) % (2 ** 32)
+    # puts "addBit " + modifyBits(ret,32)
+    return ret
 end
-# y = 0b00000100000000000000000000000000
-# x = 0b00000000000000000011111111111111 
-
-# puts addBit(x,y);
+# addBit(
+#     0b1111111111111100000000000000,
+#     0b00000000000000000011111111111111);

@@ -9,7 +9,7 @@ require_relative "../function/divideToSixteenwords"
 
 
 def message1 i, w
-    p1 = usigma1($compressArray[4])
+    p1 = sigma($compressArray[4],1,true)
     p2 = makeDecision($compressArray[4],$compressArray[5],$compressArray[6])
     p3 = $compressArray[7];
     p4 = $randNum[i];
@@ -24,7 +24,7 @@ def message1 i, w
 end
 
 def message2
-    p1 = usigma0($compressArray[0]);
+    p1 = sigma($compressArray[0],0,true);
     p2 = majority($compressArray[0], $compressArray[1],$compressArray[2]);
     m2 = addBit(p1,p2);
     # puts modifyBits(m2,32);

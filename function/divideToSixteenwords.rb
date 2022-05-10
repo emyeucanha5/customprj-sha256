@@ -16,9 +16,9 @@ def divideToSexteenwords str
     # puts w
     while i < 64
         s1 = w[i-16]
-        s2 = sigma0(w[i-15])
+        s2 = sigma(w[i-15],0,false)
         s3 = w[i-7]
-        s4 = sigma1(w[i-2])
+        s4 = sigma(w[i-2],1,false)
         tmps12 = addBit(s1,s2);
         tmps34 = addBit(s3,s4);
         s5 = addBit(tmps12, tmps34);

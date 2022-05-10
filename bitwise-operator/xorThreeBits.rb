@@ -1,12 +1,11 @@
 require_relative("./modifyBits")
+
 def xorThreeBits(x, y, z)
-    
-    # k = (x.to_i^y.to_i^z.to_i).to_s(2)
-    k = (x.to_i^y.to_i^z.to_i)
-    # puts "xorThreeBits: " + modifyBits(k,32)
-    return k
+    ret = (x.to_i ^ y.to_i ^ z.to_i)
+    # puts "xorThreeBits: " + modifyBits(ret,32)
+    return ret
 end
-
-
-# k = xorThreeBits( 0b11111110000000000000000001111111, 0b1111111111111100000000000000, 0b11111111111) 
-# puts k
+# xorThreeBits( 
+#     0b11111110000000000000000001111111,
+#     0b00000000000000000011111111111111,
+#     0b11111111111111000000000000000000);
