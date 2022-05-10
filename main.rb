@@ -29,7 +29,6 @@ def finalCompress str
             for i in 0..7
                 $compressArray[i] =  addBit($compressArray[i], $initialArray[i]);
             end
-        # puts 
         else
             for i in 0..7
                 $compressArray[i] =  addBit($compressArray[i], oldcompress[i]);
@@ -50,8 +49,5 @@ def finalCompress str
     end
 
     ret = $finalCompressArray.join("")
-    # while ret.length() < 64
-    #     ret = '0' + ret;
-    # end
     return ret
 end

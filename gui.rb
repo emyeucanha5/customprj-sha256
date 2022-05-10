@@ -59,8 +59,6 @@ $menuItem.each do |item|
             $f3.pack()
         end
     end
-    # menu.configure('activeforeground', 'white')
-    # menu.configure('activebackground', '#c59d5f')
 end
 
 $f1 = TkFrame.new(root) do
@@ -94,7 +92,6 @@ end
 
 $input.bind('KeyRelease'){
     $output.text = finalCompress $input.value
-    # puts $output.text
 }
  
 labelforoutput = TkLabel.new($f1) do
@@ -167,7 +164,7 @@ $button = TkButton.new($f2) do
 end
 $input_nonce.bind('KeyRelease'){
     $output_block.text = getText($input_block.value, $input_nonce.value, '0000000000000000000000000000000000000000000000000000000000000000');
-    if($output_block.text[0,2] != "00")
+    if($output_block.text[0,2] != $difficulty)
         $f2.background = 'red';
         root.background = 'red';
         $hash_label.background = 'red';
@@ -187,7 +184,7 @@ $input_nonce.bind('KeyRelease'){
 }
 $input_block.bind('KeyRelease'){
     $output_block.text = getText($input_block.value, $input_nonce.value, '0000000000000000000000000000000000000000000000000000000000000000');
-    if($output_block.text[0,2] != "00")
+    if($output_block.text[0,2] != $difficulty)
         $f2.background = 'red';
         root.background = 'red';
         $hash_label.background = 'red';
@@ -367,7 +364,7 @@ $tmpArray.each do |i|
             end
         end
         for j in 0..5
-            if($output_block_chain[j].text[6,64][0,2] != "00")
+            if($output_block_chain[j].text[6,64][0,2] != $difficulty)
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
@@ -391,7 +388,7 @@ $tmpArray.each do |i|
             end
         end
         for j in 0..5
-            if($output_block_chain[j].text[6,64][0,2] != "00")
+            if($output_block_chain[j].text[6,64][0,2] != $difficulty)
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
@@ -419,7 +416,7 @@ $tmpArray.each do |i|
             end
         end
         for j in 0..5
-            if($output_block_chain[j].text[6,64][0,2] != "00")
+            if($output_block_chain[j].text[6,64][0,2] != $difficulty)
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
@@ -525,7 +522,7 @@ $tmp2Array.each do |i|
             end
         end
         for j in 0..5
-            if($output_block_chain[j].text[6,64][0,2] != "00")
+            if($output_block_chain[j].text[6,64][0,2] != $difficulty)
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
@@ -533,10 +530,6 @@ $tmp2Array.each do |i|
                 $previous_label[j].background = 'lightgreen'
             end
         end
-        # puts $output_block_chain[i].text
-        # if($output_block.text[0,2] != "00")   
-        # else
-        # end
     }
     $input_block_chain[i].bind('KeyRelease'){
         for j in 0..5
@@ -553,7 +546,7 @@ $tmp2Array.each do |i|
             end
         end
         for j in 0..5
-            if($output_block_chain[j].text[6,64][0,2] != "00")
+            if($output_block_chain[j].text[6,64][0,2] != $difficulty)
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else
@@ -582,7 +575,7 @@ $tmp2Array.each do |i|
             end
         end
         for j in 0..5
-            if($output_block_chain[j].text[6,64][0,2] != "00")
+            if($output_block_chain[j].text[6,64][0,2] != $difficulty)
                 $output_block_chain[j].background = 'red'
                 $previous_label[j].background = 'red'
             else

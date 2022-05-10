@@ -1,6 +1,6 @@
 require_relative('./main.rb')
 Maxnonce = 100000;
-
+$difficulty = "00";
 class BlockCreated
     attr_accessor :tmpHash, :nonce
     def initialize (tmpHash,nonce)
@@ -28,7 +28,7 @@ def mine str, previousBlock
         tmp = '1' + nonce.to_s + str + previousBlock;
         tmpHash = finalCompress tmp;
         # puts tmpHash[0,2]
-        if(tmpHash[0,2] == "00")
+        if(tmpHash[0,2] == $difficulty)
             return BlockCreated.new(
                tmpHash,
                 nonce
