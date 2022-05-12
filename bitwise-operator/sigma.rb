@@ -1,8 +1,6 @@
 require_relative("./rightOperator.rb");
-require_relative("./xorThreeBits");
-require_relative("./addBits");
+require_relative("./add_and_xor.rb");
 require_relative("./modifyBits");
-require_relative("./hashString");
 
 
 def sigma(x, i, usigma)
