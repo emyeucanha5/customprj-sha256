@@ -6,7 +6,7 @@ require_relative "../function/messageSchedule"
 
 # function
 
-def message1 i, w
+def temporary1 i, w
     p1 = sigma($compressArray[4],1,true)
     p2 = choice($compressArray[4],$compressArray[5],$compressArray[6])
     p3 = $compressArray[7];
@@ -18,7 +18,7 @@ def message1 i, w
     return m1;
 end
 
-def message2
+def temporary2
     p1 = sigma($compressArray[0],0,true);
     p2 = majority($compressArray[0], $compressArray[1],$compressArray[2]);
     m2 = addBit(p1,p2);
@@ -26,4 +26,4 @@ def message2
     return m2;
 end
 
-# message1 0
+# temporary1 0

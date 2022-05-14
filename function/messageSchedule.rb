@@ -2,7 +2,7 @@ require_relative('../bitwise-operator/index.rb');
 require_relative('./messages.rb')
 $blockLength;
 $blockOfMessages = []
-def padding64bits message,l
+def append0s message,l
     tmpLength = l.to_s(2);
     i = tmpLength.length
     while i<64
@@ -37,7 +37,7 @@ def split message
         i+=1
     end
     l-=1;
-    padding64bits message,l
+    append0s message,l
 end
 
 def messageSchedule str
