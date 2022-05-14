@@ -16,6 +16,7 @@ root.title('Blockchain demo application')
 $menuItem = ['SHA256', 'Block', 'Block Chain']
 
 
+
 $header = TkFrame.new(root) do
     background 'black'
     pack('side' => 'top', 'fill' => 'x')
@@ -163,7 +164,7 @@ $button = TkButton.new($f2) do
     pack("side" => "top")
 end
 $input_nonce.bind('KeyRelease'){
-    $output_block.text = getText($input_block.value, $input_nonce.value, '0000000000000000000000000000000000000000000000000000000000000000');
+    $output_block.text = getText($input_block.value, $input_nonce.value, $defaultHash);
     if($output_block.text[0,2] != $difficulty)
         $f2.background = 'red';
         root.background = 'red';
@@ -183,7 +184,7 @@ $input_nonce.bind('KeyRelease'){
     end
 }
 $input_block.bind('KeyRelease'){
-    $output_block.text = getText($input_block.value, $input_nonce.value, '0000000000000000000000000000000000000000000000000000000000000000');
+    $output_block.text = getText($input_block.value, $input_nonce.value, $defaultHash);
     if($output_block.text[0,2] != $difficulty)
         $f2.background = 'red';
         root.background = 'red';
@@ -206,7 +207,7 @@ $input_block.bind('KeyRelease'){
     
 
 $button.bind('ButtonRelease'){
-    x = mine($input_block.value, '0000000000000000000000000000000000000000000000000000000000000000')
+    x = mine($input_block.value, $defaultHash)
     $output_block.text = x.tmpHash;
     $input_nonce.value = x.nonce;
     $f2.background = 'lightblue';
@@ -227,7 +228,7 @@ end
 
 
 $output_block = TkLabel.new($f2) do
-    text getText '',10,'0000000000000000000000000000000000000000000000000000000000000000'
+    text getText '',10,$defaultHash
     background "lightblue"
     font TkFont.new('times 15 bold') 
     pack("side" => "left",'fill' => 'x',  "padx"=> "15", "pady"=> "15") 
@@ -322,20 +323,20 @@ $tmpArray.each do |i|
     end
     $previous_label[i] = TkLabel.new($f4[i]) do
         background "lightgreen"
-        text 'Prev: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
+        text 'Prev: ' + getText( '',10,$defaultHash ).to_s
         width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "top",  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
     $output_block_chain[i] = TkLabel.new($f4[i]) do
-        text 'Hash: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
+        text 'Hash: ' + getText( '',10,$defaultHash ).to_s
         background "lightgreen"
         width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "bottom",'fill' => 'x',  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
     if (i==0)
-        $previous_label[i].text = 'Prev: ' + '0000000000000000000000000000000000000000000000000000000000000000'
+        $previous_label[i].text = 'Prev: ' + $defaultHash
         tmp = mine($input_block_chain[i].value, $previous_label[i].text[6,64]);
         $input_block_chain_nonce[i].value = tmp.nonce
         $output_block_chain[i].text = "Hash: " + tmp.tmpHash
@@ -480,20 +481,20 @@ $tmp2Array.each do |i|
     end
     $previous_label[i] = TkLabel.new($f4[i]) do
         background "lightgreen"
-        text 'Prev: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
+        text 'Prev: ' + getText( '',10,$defaultHash ).to_s
         width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "top",  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
     $output_block_chain[i] = TkLabel.new($f4[i]) do
-        text 'Hash: ' + getText( '',10,'0000000000000000000000000000000000000000000000000000000000000000' ).to_s
+        text 'Hash: ' + getText( '',10,$defaultHash ).to_s
         background "lightgreen"
         width 70
         font TkFont.new("times #{$font_size} bold") 
         pack("side" => "bottom",'fill' => 'x',  "padx"=> "#{$pad_x}", "pady"=> "#{$pad_y-4}") 
     end
     if (i==0)
-        $previous_label[i].text = 'Prev: ' + '0000000000000000000000000000000000000000000000000000000000000000'
+        $previous_label[i].text = 'Prev: ' + $defaultHash
         tmp = mine($input_block_chain[i].value, $previous_label[i].text[6,64]);
         $input_block_chain_nonce[i].value = tmp.nonce
         $output_block_chain[i].text = "Hash: " + tmp.tmpHash

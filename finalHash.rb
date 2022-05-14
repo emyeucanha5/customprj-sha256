@@ -2,6 +2,7 @@ require_relative './bitwise-operator/index';
 require_relative './hash/index.rb';
 require_relative './function/index.rb';
 
+$defaultHash = '0000000000000000000000000000000000000000000000000000000000000000';
 $finalCompressArray = []
 $finalString;
 initHash # create 8 random number by using factional part of SQUARE root of first 8 primes number and multiple them with 2^32
@@ -9,16 +10,15 @@ genRandomNumber # create 64 random number by using factional part of CUBE root o
 def finalCompress str
     $finalCompressArray.clear 
     $compressArray = initHash.clone
-    $arr.clear
     $blockOfMessages.clear
     # puts $compressArray
     message = createMessagesBits str # Hash message and return bits
-    tmpStr = split message; # add zero and divide to multiple chunk loop
+    tmpStr = split message; # add zero and divide to multiple chunk loopz
     w = [];
     j = 1
     oldcompress = [];
     tmpStr.each do |i| # for everyLoop the array w and compressArray[i] would change.
-        w = divideToSexteenwords(i); # return 64 word
+        w = messageSchedule(i); # return 64 word
         oldcompress = $compressArray.clone
         compression w
         if(j==1)

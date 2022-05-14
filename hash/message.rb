@@ -1,24 +1,19 @@
 require_relative "./initHash";
 require_relative "../bitwise-operator/index";
 require_relative "../function/cubeRootOfPrime"
-require_relative "../function/divideToSixteenwords"
+require_relative "../function/messageSchedule"
 
 
 # function
 
-
-
 def message1 i, w
     p1 = sigma($compressArray[4],1,true)
-    p2 = makeDecision($compressArray[4],$compressArray[5],$compressArray[6])
+    p2 = choice($compressArray[4],$compressArray[5],$compressArray[6])
     p3 = $compressArray[7];
     p4 = $randNum[i];
     p5 = w[i];
     # puts changeBitsToDecimal(p5)
-    tmp1 = addBit(p1, p2);
-    tmp2 = addBit(p3, p4);
-    tmp3 = addBit(tmp1, tmp2);
-    m1 = addBit(tmp3, p5);
+    m1 = addBit(addBit(addBit(p1, p2), addBit(p3, p4)), p5);
     # puts modifyBits(m1,32);
     return m1;
 end

@@ -17,9 +17,3 @@ def compression w
         i+= 1
     end
 end
-# compression;
-# $compressArray.each do |i| 
-#     puts modifyBits(i,32)
-# end
-# puts $compressArray
-# puts
