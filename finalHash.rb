@@ -13,7 +13,7 @@ def finalCompress str
     $blockOfMessages.clear
     # puts $compressArray
     message = createMessagesBits str # Hash message and return bits
-    tmpStr = split message; # add zero and divide to multiple chunk loopz
+    tmpStr = splitAndAppend0 message; # add zero and divide to multiple chunk loopz
     w = [];
     j = 1
     oldcompress = [];

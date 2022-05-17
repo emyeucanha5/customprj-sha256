@@ -208,7 +208,7 @@ $input_block.bind('KeyRelease'){
 
 $button.bind('ButtonRelease'){
     x = mine($input_block.value, $defaultHash)
-    $output_block.text = x.tmpHash;
+    $output_block.text = x.digest;
     $input_nonce.value = x.nonce;
     $f2.background = 'lightblue';
     root.background = 'lightblue';
@@ -339,16 +339,16 @@ $tmpArray.each do |i|
         $previous_label[i].text = 'Prev: ' + $defaultHash
         tmp = mine($input_block_chain[i].value, $previous_label[i].text[6,64]);
         $input_block_chain_nonce[i].value = tmp.nonce
-        $output_block_chain[i].text = "Hash: " + tmp.tmpHash
-        $block_chain_value[0] =  PrevAndHash.new(tmp.tmpHash,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
+        $output_block_chain[i].text = "Hash: " + tmp.digest
+        $block_chain_value[0] =  Block.new(tmp.digest,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
         # puts $output_block_chain[0].text 
     else
-        $previous_label[i].text = 'Prev: ' + $block_chain_value[i-1].tmpHash.to_s
+        $previous_label[i].text = 'Prev: ' + $block_chain_value[i-1].digest.to_s
         tmp = mine($input_block_chain[i].value, $previous_label[i].text[6,64]);
         $input_block_chain_nonce[i].value = tmp.nonce
-        $output_block_chain[i].text = "Hash: " + tmp.tmpHash
-        $block_chain_value[i] =  PrevAndHash.new(tmp.tmpHash,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
-        # puts tmp.tmpHash
+        $output_block_chain[i].text = "Hash: " + tmp.digest
+        $block_chain_value[i] =  Block.new(tmp.digest,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
+        # puts tmp.digest
     end
     $input_block_chain_nonce[i].bind('KeyRelease'){
         for j in 0..5
@@ -357,11 +357,11 @@ $tmpArray.each do |i|
                 if(i==j)
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 else
-                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].tmpHash.to_s
+                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].digest.to_s
                     $block_chain_value[j].prev = $previous_label[j].text[6,64]
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 end
-                $block_chain_value[j] = PrevAndHash.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
+                $block_chain_value[j] = Block.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
             end
         end
         for j in 0..5
@@ -381,11 +381,11 @@ $tmpArray.each do |i|
                 if(i==j)
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 else
-                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].tmpHash.to_s
+                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].digest.to_s
                     $block_chain_value[j].prev = $previous_label[j].text[6,64]
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 end
-                $block_chain_value[j] = PrevAndHash.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
+                $block_chain_value[j] = Block.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
             end
         end
         for j in 0..5
@@ -400,20 +400,20 @@ $tmpArray.each do |i|
     }
     $button_block_chain[i].bind('ButtonRelease'){
         x = mine($input_block_chain[i].value, $previous_label[i].text[6,64])
-        $output_block_chain[i].text = 'Hash: ' + x.tmpHash;
+        $output_block_chain[i].text = 'Hash: ' + x.digest;
         $input_block_chain_nonce[i].value = x.nonce;
-        $block_chain_value[i] = PrevAndHash.new($output_block_chain[i].text[6,64], $previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i].value)
+        $block_chain_value[i] = Block.new($output_block_chain[i].text[6,64], $previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i].value)
         for j in 0..5
             if(j < i)
             else
                 if(i==j)
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 else
-                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].tmpHash.to_s
+                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].digest.to_s
                     $block_chain_value[j].prev = $previous_label[j].text[6,64]
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 end
-                $block_chain_value[j] = PrevAndHash.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
+                $block_chain_value[j] = Block.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
             end
         end
         for j in 0..5
@@ -497,16 +497,16 @@ $tmp2Array.each do |i|
         $previous_label[i].text = 'Prev: ' + $defaultHash
         tmp = mine($input_block_chain[i].value, $previous_label[i].text[6,64]);
         $input_block_chain_nonce[i].value = tmp.nonce
-        $output_block_chain[i].text = "Hash: " + tmp.tmpHash
-        $block_chain_value[0] =  PrevAndHash.new(tmp.tmpHash,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
+        $output_block_chain[i].text = "Hash: " + tmp.digest
+        $block_chain_value[0] =  Block.new(tmp.digest,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
         # puts $output_block_chain[0].text 
     else
-        $previous_label[i].text = 'Prev: ' + $block_chain_value[i-1].tmpHash.to_s
+        $previous_label[i].text = 'Prev: ' + $block_chain_value[i-1].digest.to_s
         tmp = mine($input_block_chain[i].value, $previous_label[i].text[6,64]);
         $input_block_chain_nonce[i].value = tmp.nonce
-        $output_block_chain[i].text = "Hash: " + tmp.tmpHash
-        $block_chain_value[i] =  PrevAndHash.new(tmp.tmpHash,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
-        # puts tmp.tmpHash
+        $output_block_chain[i].text = "Hash: " + tmp.digest
+        $block_chain_value[i] =  Block.new(tmp.digest,$previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i])
+        # puts tmp.digest
     end
     $input_block_chain_nonce[i].bind('KeyRelease'){
         for j in 0..5
@@ -515,11 +515,11 @@ $tmp2Array.each do |i|
                 if(i==j)
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 else
-                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].tmpHash.to_s
+                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].digest.to_s
                     $block_chain_value[j].prev = $previous_label[j].text[6,64]
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 end
-                $block_chain_value[j] = PrevAndHash.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
+                $block_chain_value[j] = Block.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
             end
         end
         for j in 0..5
@@ -539,11 +539,11 @@ $tmp2Array.each do |i|
                 if(i==j)
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 else
-                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].tmpHash.to_s
+                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].digest.to_s
                     $block_chain_value[j].prev = $previous_label[j].text[6,64]
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 end
-                $block_chain_value[j] = PrevAndHash.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
+                $block_chain_value[j] = Block.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
             end
         end
         for j in 0..5
@@ -559,20 +559,20 @@ $tmp2Array.each do |i|
     $button_block_chain[i].bind('ButtonRelease'){
         
         x = mine($input_block_chain[i].value, $previous_label[i].text[6,64])
-        $output_block_chain[i].text = 'Hash: ' + x.tmpHash;
+        $output_block_chain[i].text = 'Hash: ' + x.digest;
         $input_block_chain_nonce[i].value = x.nonce;
-        $block_chain_value[i] = PrevAndHash.new($output_block_chain[i].text[6,64], $previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i].value)
+        $block_chain_value[i] = Block.new($output_block_chain[i].text[6,64], $previous_label[i].text[6,64],$input_block_chain[i].value ,$input_block_chain_nonce[i].value)
         for j in 0..5
             if(j < i)
             else
                 if(i==j)
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 else
-                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].tmpHash.to_s
+                    $previous_label[j].text = 'Prev: ' + $block_chain_value[j-1].digest.to_s
                     $block_chain_value[j].prev = $previous_label[j].text[6,64]
                     $output_block_chain[j].text = "Hash: " + getText($input_block_chain[j].value, $input_block_chain_nonce[j].value, $previous_label[j].text[6,64]);
                 end
-                $block_chain_value[j] = PrevAndHash.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
+                $block_chain_value[j] = Block.new($output_block_chain[j].text[6,64], $previous_label[j].text[6,64],$input_block_chain[j].value ,$input_block_chain_nonce[j].value)
             end
         end
         for j in 0..5
@@ -592,6 +592,5 @@ end
 
 $f2.pack_forget()
 $f3.pack_forget()
-
 Tk.mainloop
 

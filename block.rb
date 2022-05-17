@@ -1,21 +1,14 @@
 require_relative('./finalHash.rb')
 Maxnonce = 100000;
 $difficulty = "00";
-class BlockCreated
-    attr_accessor :tmpHash, :nonce
-    def initialize (tmpHash,nonce)
-      # insert lines here
-      @tmpHash = tmpHash
-      @nonce = nonce
-    end
-end
 
-class PrevAndHash
-    attr_accessor :prev, :tmpHash, :data,:nonce
-    def initialize (tmpHash,prev,data,nonce)
+
+class Block
+    attr_accessor :prev, :digest, :data,:nonce
+    def initialize (digest,prev,data,nonce)
       @data = data
       @prev = prev
-      @tmpHash = tmpHash
+      @digest = digest
       @nonce = nonce
     end
 end
@@ -23,21 +16,19 @@ end
 def mine str, previousBlock
     nonce = 1;
     checked = true;
-    # previousBlock = '0000000000000000000000000000000000000000000000000000000000000000'
     while ((nonce < Maxnonce) && checked)
         tmp = '1' + nonce.to_s + str + previousBlock;
-        tmpHash = finalCompress tmp;
-        # puts tmpHash[0,2]
-        if(tmpHash[0,2] == $difficulty)
-            return BlockCreated.new(
-               tmpHash,
-                nonce
+        digest = finalCompress tmp;
+        if(digest[0,2] == $difficulty)
+            return Block.new(
+                digest,
+                previousBlock,
+                str,
+                nonce,
             )
             checked = false
         end
-        # puts nonce
         nonce += 1;
-        # puts tmp
     end
 end
 
