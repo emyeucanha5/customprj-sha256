@@ -8,7 +8,6 @@ end
 
 def changeBitsToDecimal (x)
     x =  x.to_i(2);
-    # puts x
     return x
 end
 

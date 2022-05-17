@@ -14,10 +14,8 @@ def append64bits message,l
     l = 0;
     r = 512;
     while i < $blockLength
-        # puts l, r
         tmpMessage = message[l, r];
-        $blockOfMessages.push(tmpMessage); 
-        # puts $blockOfMessages[i];
+        $blockOfMessages.push(tmpMessage);
         i+=1;
         l += 512
     end
@@ -55,5 +53,3 @@ def messageSchedule str
     end
     return w;
 end
-
-# messageSchedule "abc"

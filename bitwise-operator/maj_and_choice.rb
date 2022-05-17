@@ -4,16 +4,12 @@ require_relative("./modifyBits");
 
 def majority(x,y,z)
     ret = xorThreeBits((x & y),(x & z),(y & z))
-    # puts ("Majority: " + modifyBits(ret,32));
     return ret;
 end
 
-# majority(0b00000000111111110000000011111111,0b00000000000000001111111111111111,0b11111111111111110000000000000000);
 
 def choice(x,y,z)
     ret = (x & y) ^ (~(x) & z);
-    # puts ("Make decision: " + modifyBits(ret,32));
     return ret;
 end
 
-# choice(0b00000000111111110000000011111111,0b00000000000000001111111111111111,0b11111111111111110000000000000000);

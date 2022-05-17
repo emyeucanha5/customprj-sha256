@@ -12,8 +12,6 @@ def initHash
             ans = (ans.round(15)*(2**32)).to_i;
             $initialArray << ans;
             $initialArray2 << ans;
-            # ans = modifyBits(ans, 32)
-            # puts $initialArray.length.to_s + ' ' + ans
         end
         i+=1;
     end

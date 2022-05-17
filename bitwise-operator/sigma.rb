@@ -13,10 +13,8 @@ def sigma(x, i, usigma)
     else
         if(i==0)
             ret = xorThreeBits(rightRotate(x, 7),rightRotate(x, 18),rightShift(x,3));
-            # puts "Sigma0: " + changeDecimaltoBits(ret);
         elsif (i==1)
             ret = xorThreeBits(rightRotate(x,17),rightRotate(x, 19),rightShift(x, 10));
-            # puts ("Sigma1: " + modifyBits(ret,32));
         end
     end
 

@@ -9,8 +9,7 @@ def sieveEratosthenes
     $prime[1000] = 0;
     for i in 2..1000
         if($prime[i]==1)
-            j = i * i    
-            # print i.to_s + ' '
+            j = i * i
             while(j<1000)
                 $prime[j] = 0;
                 j+=i;
@@ -29,8 +28,6 @@ def genRandomNumber
             ans = k - k.to_i
             ans = (ans.round(15)*(2**32)).to_i;
             $randNum << ans;
-            # ans = modifyBits(ans, 32)
-            # puts $randNum.length.to_s + ' ' + ans.to_s
         end
         i+=1
     end

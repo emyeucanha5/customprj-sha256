@@ -36,4 +36,3 @@ def getText str, nonce , previousBlock
     tmp = '1' + nonce.to_s + str + previousBlock;
     return finalCompress tmp
 end
-# getText str
