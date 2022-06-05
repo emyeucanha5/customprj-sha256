@@ -1,6 +1,4 @@
 require_relative ("../bitwise-operator/index.rb");
-
-
 def createMessagesBits str;
     ret = "";
     arr = str.bytes;

@@ -10,7 +10,7 @@ root.grid_rowconfigure(0, :weight => 1)
 root.grid_columnconfigure(0, :weight => 1)
 root.overrideredirect(true)
 root.overrideredirect(false)
-root.attributes(:fullscreen => 1)
+# root.attributes(:fullscreen => 1)
 root.title('Blockchain demo application')
 
 $menuItem = ['SHA256', 'Block', 'Block Chain']
@@ -35,8 +35,8 @@ $menuItem.each do |item|
     menu.bind("ButtonRelease") do
         if(item == "SHA256")
             $f1.pack()
-            $f2.pack_forget()
             root.background = 'lightblue';
+            $f2.pack_forget()
             $f3.pack_forget()
         end
         if(item == "Block")
@@ -74,7 +74,7 @@ text_label = TkLabel.new($f1) do
     background "lightblue"
     pady 25
     font TkFont.new('times 30 bold') 
-    pack("side" => "top", "pady"=> "25", )
+    pack("side" => "top", "pady"=> "15", )
 end
 TkLabel.new($f1) do
     text 'Data'
@@ -98,16 +98,16 @@ $input.bind('KeyRelease'){
 labelforoutput = TkLabel.new($f1) do
     background "lightblue"
     text 'SHA256 enrypt algorithm: '
-    font TkFont.new('times 15 bold') 
-    pack("side" => "left",  "padx"=> "15", "pady"=> "15") 
+    font TkFont.new('times 18 bold') 
+    pack("side" => "left",  "padx"=> "15", "pady"=> "10") 
 end
 
 
 $output = TkLabel.new($f1) do
     text finalCompress ''
     background "lightblue"
-    font TkFont.new('times 15 bold') 
-    pack("side" => "left",  "padx"=> "15", "pady"=> "15") 
+    font TkFont.new('times 18 bold') 
+    pack("side" => "left",  "padx"=> "15", "pady"=> "25") 
 end
 
 
@@ -222,7 +222,7 @@ $button.bind('ButtonRelease'){
 $hash_label = TkLabel.new($f2) do
     background "lightblue"
     text 'Hash: '
-    font TkFont.new('times 15 bold') 
+    font TkFont.new('times 18 bold') 
     pack("side" => "left",  "padx"=> "15", "pady"=> "15") 
 end
 
@@ -230,7 +230,7 @@ end
 $output_block = TkLabel.new($f2) do
     text getText '',10,$defaultHash
     background "lightblue"
-    font TkFont.new('times 15 bold') 
+    font TkFont.new('times 18 bold') 
     pack("side" => "left",'fill' => 'x',  "padx"=> "15", "pady"=> "15") 
 end
 
